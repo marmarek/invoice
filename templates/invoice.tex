@@ -67,10 +67,17 @@
 \setupTABLE[c][2][width=65mm,align={nothyphenated,flushleft,lohi}]    % nazwa
 \setupTABLE[c][3][width=15mm,align={nothyphenated,middle,lohi}]       % ilość + jm
 \setupTABLE[c][4][width=30mm,align={nothyphenated,flushright,lohi}]   % netto
+{% if invoice.currency.code != 'PLN' and invoice.tax > 0.0 %}
 \setupTABLE[c][5][width=10mm,align={nothyphenated,flushright,lohi}]   % vat
 \setupTABLE[c][6][width=20mm,align={nothyphenated,flushright,lohi}]   % vat
 \setupTABLE[c][7][width=5mm,align={nothyphenated,flushright,lohi}]   % brutto
 \setupTABLE[c][8][width=25mm,align={nothyphenated,flushright,lohi}]   % brutto
+{% else %}
+\setupTABLE[c][5][width=30mm,align={nothyphenated,flushright,lohi}]   % vat
+\setupTABLE[c][6][width=25mm,align={nothyphenated,flushright,lohi}]   % vat
+\setupTABLE[c][7][width=30mm,align={nothyphenated,flushright,lohi}]   % brutto
+\setupTABLE[c][8][width=25mm,align={nothyphenated,flushright,lohi}]   % brutto
+{% endif %}
 
 \bTABLE
 \bTR[align={middle,lohi}]
