@@ -86,7 +86,7 @@ class Config:
 
     def get_invoice_file(self, number, ext):
         number = tuple(reversed(number.split('/')))
-        filename = 'WZJP_{}.{}'.format('_'.join(number), ext.lstrip('.'))
+        filename = 'invoice_{}.{}'.format('_'.join(number), ext.lstrip('.'))
         return os.path.join(self.invoicespath, filename)
 
 config = Config()
