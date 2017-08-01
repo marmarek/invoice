@@ -255,6 +255,10 @@ class Line(Base):
         onupdate='CASCADE', ondelete='CASCADE'), primary_key=True)
     product_code = Column(ForeignKey('products.code',
         onupdate='CASCADE', ondelete='RESTRICT'), primary_key=True)
+    product_name = Column(String(64),
+        default=(lambda context:
+            context.connection.execute('select name from products where code=:code',
+                {'code': context.current_parameters['product_code']}).first()[0]))
     amount = Column(Numeric(),
         nullable=False)
     price = Column(Numeric(4),
@@ -296,6 +300,7 @@ class Line(Base):
 
     def __repr__(self):
         return ('<{0.__class__.__name__} {0.product_code!r}'
+            ' product_desc={0.product_desc!r}'
             ' invoice={0.invoice_no!r}'
             ' amount={0.amount!r}'
             ' price={0.price!r}'

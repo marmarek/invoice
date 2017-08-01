@@ -14,7 +14,7 @@ Faktura {% if invoice.finalised %}VAT{% else %}PROFORMA{% endif %} nr {{ invoice
 {% if loop.index != 1 -%}
  ----------------------------------------------------------------------------
 {% endif -%}
-{{ '%4d'|format(loop.index) }}  {{ '%-37s'|format(line.product.name) }}  {{ '%5s'|format(line.product.unit) }}  {{ '%7.2f'|format(line.price) }}  {{ '%7.2f'|format(line.vat) }}
+{{ '%4d'|format(loop.index) }}  {{ '%-37s'|format(line.product_name) }}  {{ '%5s'|format(line.product.unit) }}  {{ '%7.2f'|format(line.price) }}  {{ '%7.2f'|format(line.vat) }}
                                              {{ '%5d'|format(line.amount) }}  {{ '%7.2f'|format(line.netto) }}  {{ '%7.2f'|format(line.tax) }}  {{ '%7.2f'|format(line.brutto) }}
 {% endfor  %}{% if invoice.lines|count > 0 %}==============================================================================
 {% endif %}                                              SUMA  {{ '%7.2f'|format(invoice.netto) }}  {{ '%7.2f'|format(invoice.tax) }}  {{ '%7.2f'|format(invoice.brutto) }}

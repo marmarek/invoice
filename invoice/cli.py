@@ -323,6 +323,7 @@ class CmdInvoice(ArgCmd):
 
     parser_add.add_argument('--vat', '-v', type=decimal.Decimal,
         help='VAT factor')
+    parser_add.add_argument('--name', help='Override default product name')
     parser_add.add_argument('product', metavar='PRODUCT',
         help='Product code')
     parser_add.add_argument('amount', metavar='AMOUNT', type=decimal.Decimal,
@@ -339,7 +340,7 @@ class CmdInvoice(ArgCmd):
 
         self.invoice.add_line(args.product, args.amount,
             price=args.price, bprice=args.bprice, netto=args.netto,
-            brutto=args.brutto, vat=args.vat)
+            brutto=args.brutto, vat=args.vat, product_name=args.name)
 
     parser_del = argparse.ArgumentParser(prog='del',
         description='Delete invoice line.')

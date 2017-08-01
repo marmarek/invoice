@@ -90,7 +90,7 @@
 {% for line in invoice.lines %}
 \bTR
     \bTD[nr=2] {{ loop.index }}\eTD
-    \bTD[nr=2] {{ line.product.name }}\eTD
+    \bTD[nr=2] {{ line.product_name }}\eTD
     \bTD {{ line.product.unit }}\eTD
     \bTD {{ line.price|format_currency(invoice.currency_code, format='0.00') }}\eTD
     \bTD[nc=2] {{ line.vat|format_decimal(format='#') }} \%\eTD
