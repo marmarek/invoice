@@ -186,7 +186,7 @@ class Invoice(Base):
             product_code=product.code,
             amount=decimal.Decimal(amount),
             price=product.prices[self.currency_code].price,
-            currency=self.currency,
+            currency_code=self.currency_code,
             vat=product.vat)
 
         for k, v in kwargs.items():
